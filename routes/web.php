@@ -31,4 +31,4 @@ Route::get('/dashboard', function () {
 Route::get('/test', function () {
     return view('dashboard.test');
 });
-Route::post('/import', [DashboardController::class, 'import']);
+Route::post('/import', [HomeController::class, 'import']);
