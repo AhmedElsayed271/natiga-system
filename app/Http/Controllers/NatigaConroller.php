@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ReslutAdady;
+use App\Models\ResultMhany;
 use App\Models\ReslutThanwy;
 use Illuminate\Http\Request;
 use App\Models\ResultThanwayAddadyAkradAhrary;
@@ -14,9 +15,14 @@ class NatigaConroller extends Controller
     {
 
 
-        
-        try {
-
+            $request->validate([
+                'code' => "required|integer",
+                'section' => "required",
+            ],[
+                'code.required' => "يجب ادخال رقم الاكتتاب",
+                'code.integer' => "يجب ان يكون رقم الاكتتاب رقما وليس احرف",
+                'section.required' => "اختر الفرع",
+            ]);
 
             if ($request->section == 1) {
                 
@@ -61,14 +67,19 @@ class NatigaConroller extends Controller
                 }
 
                 return view('natiga-thanway-akrad', compact('result'));
+            } else if ($request->section == 5) {
+                
+                $result = ResultMhany::where('code','=',$request->code)->first();
+
+
+                if (!$result) {
+
+                    return redirect()->route('home')->with(['error' => "الكود خاطئ"]);
+                }
+
+                return view('natiga-mahany', compact('result'));
             }
 
-
-
-        } catch(\Exception $e){
-            return $e;
-            return redirect()->route('home')->with(['error' => "حدث خطأ ما يرجى اعادة المحاولة او التواصل مع الدعم الفني"]);
-        }
-
+            return redirect()->route('home');
     }
 }

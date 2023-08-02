@@ -39,6 +39,17 @@
             <div class="alert-danger alert">{{ Session::get('error') }}</div>
           </div>
         @endif
+
+          @error(('code'))
+          <div class="container">
+            <div class="alert-danger alert">{{ $message }}</div>
+          </div>
+        @endif
+          @error(('section'))
+          <div class="container">
+            <div class="alert-danger alert">{{ $message }}</div>
+          </div>
+        @endif
   
           <div class="inp">
             <div class="mb-3 text-end">
@@ -64,6 +75,7 @@
               <option value="2">الاعدادي</option>
               <option value="3">الاحرار عربي</option>
               <option value="4">الاحرار اكراد</option>
+              <option value="5">ثانوي مهني</option>
             </select>
               </form>
             </div>
