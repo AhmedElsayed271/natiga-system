@@ -71,10 +71,10 @@
               required 
             >
             <option selected disabled >اختر الفرع </option>
-              <option value="1">الثانوية</option>
+              <option value="1"> الثانوية (علمي و ادبي)</option>
               <option value="2">الاعدادي</option>
               <option value="3">الاحرار عربي</option>
-              <option value="4">الاحرار اكراد</option>
+              <option value="4">الاحرار كردي</option>
               <option value="5">ثانوي مهني</option>
             </select>
               </form>
